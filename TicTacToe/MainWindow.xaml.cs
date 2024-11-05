@@ -102,11 +102,47 @@ namespace TicTacToe
             // Check for horizontal wins
             var same = (nResults[0] & nResults[1] & nResults[2]) == nResults[0];
 
-            if (nResults[0] != MarkType.Free && same)
+            if (nResults[0] != MarkType.Free && (nResults[0] & nResults[1] & nResults[2]) == nResults[0])
             {
                 nGameEnded = true;
             }
 
+            if (nResults[3] != MarkType.Free && (nResults[3] & nResults[4] & nResults[5]) == nResults[3])
+            {
+                nGameEnded = true;
+            }
+
+            if (nResults[6] != MarkType.Free && (nResults[6] & nResults[7] & nResults[8]) == nResults[6])
+            {
+                nGameEnded = true;
+            }
+
+            // check for vertical wins
+            if (nResults[0] != MarkType.Free && (nResults[0] & nResults[3] & nResults[6]) == nResults[0])
+            {
+                nGameEnded = true;
+            }
+
+            if (nResults[1] != MarkType.Free && (nResults[1] & nResults[4] & nResults[7]) == nResults[1])
+            {
+                nGameEnded = true;
+            }
+
+            if (nResults[2] != MarkType.Free && (nResults[2] & nResults[5] & nResults[8]) == nResults[2])
+            {
+                nGameEnded = true;
+            }
+
+            //check for cross wins
+            if (nResults[0] != MarkType.Free && (nResults[0] & nResults[4] & nResults[8]) == nResults[0])
+            {
+                nGameEnded = true;
+            }
+
+            if (nResults[2] != MarkType.Free && (nResults[2] & nResults[4] & nResults[6]) == nResults[2])
+            {
+                nGameEnded = true;
+            }
             if (!nResults.Any(result => result == MarkType.Free))
             {
                 //Game ended
