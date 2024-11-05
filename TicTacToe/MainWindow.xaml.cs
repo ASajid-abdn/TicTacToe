@@ -100,10 +100,16 @@ namespace TicTacToe
         private void CheckForWinner()
         {
             // Check for horizontal wins
-            var same = (nResults[0] & nResults[1] & nResults[2] == nResults[0]);
+            var same = (nResults[0] & nResults[1] & nResults[2]) == nResults[0];
 
             if (nResults[0] != MarkType.Free && same)
             {
+                nGameEnded = true;
+            }
+
+            if (!nResults.Any(result => result == MarkType.Free))
+            {
+                //Game ended
                 nGameEnded = true;
             }
         }
